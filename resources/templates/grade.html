@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .update {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 0.5em;
+            padding-top: 0.6em;
+            padding-bottom: 0.6em;
+            text-align: center;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border-radius: 5px;
+            border: solid white 2px;
+        }
+        .update:hover {
+            background-color: orange;
+            cursor: pointer;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/}">Form</a>
+    <a th:href="@{/grade}">Grade</a>
+</div>
+<h1>Grades</h1>
+<table id="table">
+    <tr>
+        <th>Student</th>
+        <th>Subject</th>
+        <th>Score</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="grade : ${grade}">
+        <td th:text="${grade.name}"></td>
+        <td th:text="${grade.sub}"></td>
+        <td th:text="${grade.score}"></td>
+        <td><a role="button" class="update" th:href="@{/(id=${grade.id})}">Update</a></td>
+    </tr>
+</table>
+</body>
+</html>
